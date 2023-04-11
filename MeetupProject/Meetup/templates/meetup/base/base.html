@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Meetups{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meetup/styles/base.css'%}">
+    <style>
+        .no_slug {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #f01b1b;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .no_slug p {
+          color: aliceblue;
+          text-align: center;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      </style>
+
+    {% block site_css %}
+
+     {% endblock %}
+</head>
+<body>
+  
+        <header id="main-header">
+            <nav id="main-logo">
+                <a href="/meetup/">Django Meetup</a>
+            </nav>
+            <h1>{% block main_heading %}{% endblock %}</h1>
+            <p>{% block header_content %}{% endblock %}</p>
+        </header>
+        <main>{% block body %}{% endblock %}
+        </main>
+
+</body>
+
+</html>

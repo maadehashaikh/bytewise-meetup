@@ -1,0 +1,29 @@
+{% extends 'meetup/base/base.html' %}
+{% load static %}
+{% block title %}All Meeting {% endblock %}
+
+<link rel="stylesheet" href="{% static 'meetup/styles/base.css'%}">
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'meetup/styles/all_meetups.css'%}">{% endblock %}
+
+
+
+<header id="main-header">
+    <nav id="main-logo">
+        <a href="/meetup/">Django Meetup</a>
+    </nav>
+
+    {% block main_heading %}We got great meetups comming up{% endblock %}
+    {% block header_content %}Find the one that best suite yours need{% endblock %}
+</header>
+{% block body %}
+<section>
+    <h2>Upcomming Meetups</h2>
+    <ol>
+         {% for meetup_item in meetups %}
+         {% include 'meetup/include/include.html' with title=meetup_item.title image=meetup_item.image.url location=meetup_item.location slug=meetup_item.slug %}
+         
+        {% endfor %}
+    </ol>
+</section>
+{% endblock %}
